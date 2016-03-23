@@ -130,7 +130,7 @@ function toggleDisplay(elementId) {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>12.172</td></tr></table><br />
+<td>13.231</td></tr></table><br />
 <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></div>
 <div class="section">
 <h2><a name="Package_List"></a>Package List</h2><a name="Package_List"></a>
@@ -151,7 +151,7 @@ function toggleDisplay(elementId) {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>12.172</td></tr></table><br />
+<td>13.231</td></tr></table><br />
 <p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p>
 <div class="section">
 <h3><a name="org.neo4j.talend"></a>org.neo4j.talend</h3><a name="org.neo4j.talend"></a>
@@ -166,24 +166,6 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
-<td><a href="#org.neo4j.talendNeo4jBatchDatabaseTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
-<td><a href="#org.neo4j.talendNeo4jBatchDatabaseTest">Neo4jBatchDatabaseTest</a></td>
-<td>5</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100%</td>
-<td>4.547</td></tr>
-<tr class="a">
-<td><a href="#org.neo4j.talendNeo4jBatchInserterNodeTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
-<td><a href="#org.neo4j.talendNeo4jBatchInserterNodeTest">Neo4jBatchInserterNodeTest</a></td>
-<td>4</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100%</td>
-<td>5.158</td></tr>
-<tr class="b">
 <td><a href="#org.neo4j.talendNeo4jImportToolTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
 <td><a href="#org.neo4j.talendNeo4jImportToolTest">Neo4jImportToolTest</a></td>
 <td>3</td>
@@ -191,67 +173,85 @@ function toggleDisplay(elementId) {
 <td>0</td>
 <td>0</td>
 <td>100%</td>
-<td>2.467</td></tr></table></div><br /></div>
+<td>7.528</td></tr>
+<tr class="a">
+<td><a href="#org.neo4j.talendNeo4jBatchDatabaseTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#org.neo4j.talendNeo4jBatchDatabaseTest">Neo4jBatchDatabaseTest</a></td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>2.848</td></tr>
+<tr class="b">
+<td><a href="#org.neo4j.talendNeo4jBatchInserterNodeTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#org.neo4j.talendNeo4jBatchInserterNodeTest">Neo4jBatchInserterNodeTest</a></td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>2.855</td></tr></table></div><br /></div>
 <div class="section">
 <h2><a name="Test_Cases"></a>Test Cases</h2><a name="Test_Cases"></a>
 <p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p>
-<div class="section">
-<h3><a name="Neo4jBatchDatabaseTest"></a>Neo4jBatchDatabaseTest</h3><a name="org.neo4j.talendNeo4jBatchDatabaseTest"></a>
-<table border="1" class="bodyTable">
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.shutdown_after_a_shutdown_should_not_complained"></a>shutdown_after_a_shutdown_should_not_complained</td>
-<td>1.109</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.search_a_none_existing_value_into_index_should_succeed_and_return_null"></a>search_a_none_existing_value_into_index_should_succeed_and_return_null</td>
-<td>0.469</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.create_node_index_should_work"></a>create_node_index_should_work</td>
-<td>1.59</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.index_create_populate_flush_find_should_succeed"></a>index_create_populate_flush_find_should_succeed</td>
-<td>0.212</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.create_node_uniqueness_constraint_should_work"></a>create_node_uniqueness_constraint_should_work</td>
-<td>1.167</td></tr></table></div>
-<div class="section">
-<h3><a name="Neo4jBatchInserterNodeTest"></a>Neo4jBatchInserterNodeTest</h3><a name="org.neo4j.talendNeo4jBatchInserterNodeTest"></a>
-<table border="1" class="bodyTable">
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.insert_node_should_succeed_with_populated_index"></a>insert_node_should_succeed_with_populated_index</td>
-<td>3.903</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.compute_label_from_incoming_object_should_succeed"></a>compute_label_from_incoming_object_should_succeed</td>
-<td>0.188</td></tr>
-<tr class="a">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.type_convertion_for_neo4j_should_work"></a>type_convertion_for_neo4j_should_work</td>
-<td>0.162</td></tr>
-<tr class="b">
-<td><img src="images/icon_success_sml.gif" alt="" /></td>
-<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.update_node_should_succeed"></a>update_node_should_succeed</td>
-<td>0.905</td></tr></table></div>
 <div class="section">
 <h3><a name="Neo4jImportToolTest"></a>Neo4jImportToolTest</h3><a name="org.neo4j.talendNeo4jImportToolTest"></a>
 <table border="1" class="bodyTable">
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td><a name="TC_org.neo4j.talend.Neo4jImportToolTest.create_neo4j_config_file_should_succeed"></a>create_neo4j_config_file_should_succeed</td>
-<td>0.005</td></tr>
+<td>0.359</td></tr>
 <tr class="b">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td><a name="TC_org.neo4j.talend.Neo4jImportToolTest.execute_import_should_succeed"></a>execute_import_should_succeed</td>
-<td>2.461</td></tr>
+<td>7.169</td></tr>
 <tr class="a">
 <td><img src="images/icon_success_sml.gif" alt="" /></td>
 <td><a name="TC_org.neo4j.talend.Neo4jImportToolTest.create_headers_file_should_succeed"></a>create_headers_file_should_succeed</td>
-<td>0.001</td></tr></table></div><br /></div>
+<td>0</td></tr></table></div>
+<div class="section">
+<h3><a name="Neo4jBatchDatabaseTest"></a>Neo4jBatchDatabaseTest</h3><a name="org.neo4j.talendNeo4jBatchDatabaseTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.shutdown_after_a_shutdown_should_not_complained"></a>shutdown_after_a_shutdown_should_not_complained</td>
+<td>0.302</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.search_a_none_existing_value_into_index_should_succeed_and_return_null"></a>search_a_none_existing_value_into_index_should_succeed_and_return_null</td>
+<td>0.285</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.create_node_index_should_work"></a>create_node_index_should_work</td>
+<td>1.096</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.index_create_populate_flush_find_should_succeed"></a>index_create_populate_flush_find_should_succeed</td>
+<td>0.429</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchDatabaseTest.create_node_uniqueness_constraint_should_work"></a>create_node_uniqueness_constraint_should_work</td>
+<td>0.736</td></tr></table></div>
+<div class="section">
+<h3><a name="Neo4jBatchInserterNodeTest"></a>Neo4jBatchInserterNodeTest</h3><a name="org.neo4j.talendNeo4jBatchInserterNodeTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.insert_node_should_succeed_with_populated_index"></a>insert_node_should_succeed_with_populated_index</td>
+<td>1.474</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.compute_label_from_incoming_object_should_succeed"></a>compute_label_from_incoming_object_should_succeed</td>
+<td>0.262</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.type_convertion_for_neo4j_should_work"></a>type_convertion_for_neo4j_should_work</td>
+<td>0.266</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td><a name="TC_org.neo4j.talend.Neo4jBatchInserterNodeTest.update_node_should_succeed"></a>update_node_should_succeed</td>
+<td>0.853</td></tr></table></div><br /></div>
       </div>
     </div>
     <div class="clear">
