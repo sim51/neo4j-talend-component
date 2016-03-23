@@ -22,3 +22,12 @@
 // Retrieve connection
 org.neo4j.talend.Neo4jBatchDatabase neo4jBatchDatabase_<%=cid%> = (org.neo4j.talend.Neo4jBatchDatabase) globalMap.get("<%=idConn%>");
 
+<%
+    if (schemaDefinitions != null) {
+        for (Map<String, String> definition : schemaDefinitions) {
+            %>
+                neo4jBatchDatabase_<%=cid%>.createSchema("<%=definition.get("TYPE")%>", <%=definition.get("LABEL")%>, <%=definition.get("PROPERTY")%>);
+            <%
+        }
+    }
+%>

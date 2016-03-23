@@ -26,7 +26,7 @@ java.util.Map<String, String> config = new java.util.HashMap();
     if (configuration != null) {
         for (Map<String, String> params : configuration) {
             %>
-                config.put("<%=params.get("KEY")%>", "<%=params.get("VALUE")%>");
+                config.put("<%=params.get("KEY")%>", <%=params.get("VALUE")%>);
             <%
         }
     }
