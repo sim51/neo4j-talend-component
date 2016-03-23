@@ -28,7 +28,6 @@ public class Neo4jImportToolTest  {
         // Neo4j configuration
         Map<String, String> configNeo = new HashMap<>();
         configNeo.put("dbms.pagecache.memory", "2G");
-        configNeo.put("dense_node_threshold", "50");
 
         // Import configuration
         Map<String, String> configImport = new HashMap<>();
@@ -67,8 +66,6 @@ public class Neo4jImportToolTest  {
 
         Assert.assertTrue(file.exists());
         Assert.assertEquals("dbms.pagecache.memory=2G",lines.get(0));
-        Assert.assertEquals("dense_node_threshold=50",lines.get(1));
-
     }
 
     @Test
