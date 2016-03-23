@@ -12,6 +12,8 @@ ifndef::env-github[]
 :idseparator: -
 endif::[]
 
-image:https://travis-ci.org/sim51/talend-neo4j-component.svg?branch=master["Build Status", link="https://travis-ci.org/sim51/talend-neo4j-component"]
+image:https://travis-ci.org/sim51/neo4j-talend-component.svg?branch=master["Build Status", link="https://travis-ci.org/sim51/neo4j-talend-component"]
+
+Project website : http://sim51.github.io/neo4j-talend-component/
 
 
