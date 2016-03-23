@@ -6,7 +6,6 @@ os:
   - linux
 env:
   matrix:
-    - NEO4J_VERSION=2.2.8
     - NEO4J_VERSION=2.3.2
     - NEO4J_VERSION=3.0.0-M05
 before_install:
