@@ -3,7 +3,6 @@ package org.neo4j.talend;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.neo4j.graphdb.DynamicRelationshipType;
-import org.neo4j.graphdb.RelationshipType;
 
 import java.io.IOException;
 import java.util.List;
@@ -57,9 +56,6 @@ public class Neo4jBatchInserterRelationship extends Neo4jBatchInserterAbstract {
         this.endIndexField = endIndexField;
 
         this.batchDb = graphDb;
-
-        // init the inserter
-        this.batchDb.getInserter();
     }
 
     /**

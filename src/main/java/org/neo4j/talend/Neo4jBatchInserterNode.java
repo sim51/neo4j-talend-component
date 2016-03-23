@@ -1,10 +1,8 @@
 package org.neo4j.talend;
 
 import org.apache.commons.lang3.StringUtils;
-import org.neo4j.graphdb.ConstraintViolationException;
 import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.Label;
-import org.neo4j.helpers.collection.MapUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -93,7 +91,7 @@ public class Neo4jBatchInserterNode extends Neo4jBatchInserterAbstract {
                 properties.remove(this.labelsField);
             }
             if(!this.insertIndexFieldName) {
-                properties.remove(this.insertIndexFieldName);
+                properties.remove(this.batchIndexFieldName);
             }
 
             // If the node exist, we update it, otherwise we create it

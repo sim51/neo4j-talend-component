@@ -31,6 +31,7 @@ public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
 
         // check the database data
         batchDb.shutdown();
+
         // Testing it with real graphdb
         GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase(dbPath);
         try (Transaction tx = graphDb.beginTx()) {

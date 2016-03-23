@@ -166,6 +166,10 @@ public class Neo4jBatchDatabase {
             case "NODE_PROPERTY_INDEX":
                 this.inserter.createDeferredSchemaIndex(DynamicLabel.label(label)).on(property).create();
                 break;
+            default:
+                // default is unique constraint
+                this.inserter.createDeferredConstraint(DynamicLabel.label(label)).assertPropertyIsUnique(property).create();
+                break;
         }
     }
 
