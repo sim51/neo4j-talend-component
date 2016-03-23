@@ -14,7 +14,7 @@
     <licenses>
         <license>
             <name>MIT</name>
-            <url>https://raw.githubusercontent.com/sim51/talend-neo4j-component/master/LICENSE</url>
+            <url>https://raw.githubusercontent.com/sim51/neo4j-talend-component/master/LICENSE</url>
         </license>
     </licenses>
 
@@ -22,9 +22,9 @@
     <!-- = SCM = -->
     <!-- ======= -->
     <scm>
-        <url>https://github.com/sim51/talend-neo4j-component</url>
-        <connection>scm:git:git://github.com/sim51/talend-neo4j-component.git</connection>
-        <developerConnection>scm:git:git@github.com:sim51/talend-neo4j-component.git</developerConnection>
+        <url>https://github.com/sim51/neo4j-talend-component</url>
+        <connection>scm:git:git://github.com/sim51/neo4j-talend-component.git</connection>
+        <developerConnection>scm:git:git@github.com:sim51/neo4j-talend-component.git</developerConnection>
     </scm>
 
     <!-- ============== -->
@@ -32,7 +32,7 @@
     <!-- ============== -->
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/sim51/talend-neo4j-component/issues</url>
+        <url>https://github.com/sim51/neo4j-talend-component/issues</url>
     </issueManagement>
 
     <!-- ====================== -->
@@ -48,8 +48,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <talend.components.folder>${user.home}/talend_components</talend.components.folder>
-        <talend.studio.folder>/home/bsimard/tmp/TOS_BD-20151214_1327-V6.1.1/</talend.studio.folder>
         <neo4j.version>2.3.2</neo4j.version>
         <java.version>1.7</java.version>
 
@@ -394,7 +392,7 @@
     <distributionManagement>
         <site>
             <id>github-site</id>
-            <url>scm:git:git@github.com:sim51/talend-neo4j-component.git</url>
+            <url>scm:git:git@github.com:sim51/neo4j-talend-component.git</url>
         </site>
     </distributionManagement>
 </project>
