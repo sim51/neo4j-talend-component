@@ -1,0 +1,268 @@
+= Components list
+:toc:
+:revnumber: {project-version}
+
+== Import with batch-inserter
+
+=== tNeo4jBatchDatabaseConnection
+
+image::images/components/tNeo4jBatchDatabaseConnection_icon32.png[]
+
+This component is used to create a new Neo4j batch inserter database.
+
+[cols="2a,4a,2a,1a,2a", options="header", width="75%"]
+|===
+
+| Name
+| Description
+| Type
+| Required ?
+| Location
+
+| Neo4j database path
+| Path where to create the Neo4j data folder. The parent folder must exist.
+| Java expression
+| TRUE
+| Simple parameters
+
+| Neo4j configuration
+| Here you can add some parameters to configure the Neo4j database. See this link to know the list of parameter : http://neo4j.com/docs/stable/configuration-settings.html
+| Table of key/value where
+
+* keys are Java String (quotes are not needed)
+* value are Java expression
+| False
+| Advanced settings
+
+|===
+
+
+=== tNeo4jBatchDatabaseInsertNode
+
+image::images/components/tNeo4jBatchDatabaseInsertNode_icon32.png[]
+
+This component is used to create nodes
+
+[cols="2a,3a,2a,1a,2a", options="header", width="75%"]
+|===
+
+| Name
+| Description
+| Type
+| Required ?
+| Location
+
+| Connection
+| A reference to a tNeo4jBatchDatabaseConnection, ie. on wich database we want to import.
+| Component reference
+| TRUE
+| Simple parameters
+
+| Field that contains the label list
+| Column name that contains the label list (separated by ;) of the node.
+| Column reference
+| FALSE
+| Simple parameters
+
+| Index name
+| Batch import needs to create an index on nodes to find them. This index store the `node import identifier` and the `neo4j technical identifier`.
+Those indexes are used to create relationships and to know if a node already exist to make an update instead of an insert.
+| Java expression
+| TRUE
+| Simple parameters
+
+| Import Identifier (must be unique across the index)
+| Column name that reference the `node import identifier` for the given index. It must be unique across the index.
+| Column reference
+| TRUE
+| Simple parameters
+
+| Saving the identifier ?
+| If true, when we create a node, we also create the import identifier attribute.
+It is usefull when this identifier is just a technical one.
+| Boolean
+| TRUE
+| Simple parameters
+
+| Number of index element in memory
+| Cache size, in terms of number of elements, that are keept in memory.
+ Its value must be enought to keep all the element in memory.
+| Java expression / Integer
+| TRUE
+| Simple parameters
+
+|===
+
+=== tNeo4jBatchDatabaseInsertRelationship
+
+image::images/components/tNeo4jBatchDatabaseInsertRelationship_icon32.png[]
+
+[cols="2a,3a,2a,1a,2a", options="header", width="75%"]
+|===
+
+| Name
+| Description
+| Type
+| Required ?
+| Location
+
+| Connection
+| A reference to a tNeo4jBatchDatabaseConnection
+| Component reference
+| TRUE
+| Simple parameters
+
+| Field for relationship type
+| Column name that contains the relationship type
+| Column reference
+| TRUE
+| Simple parameters
+
+| Direction of the relationship
+| Determine the direction of the relationship
+| Choice
+| TRUE
+| Simple parameters
+
+| Field name for the batch index
+| Column name that reference the `import identifier` for the start or end node
+| Column reference
+| TRUE
+| Simple parameters
+
+| Name of the batch index
+| Select the component where the start or end node have been created.
+This permit to retrieve the index name.
+| Component reference
+| TRUE
+| Simple parameters
+
+|===
+
+=== tNeo4jBatchDatabaseSchema
+
+image::images/components/tNeo4jBatchDatabaseSchema_icon32.png[]
+
+This component is used to create schema definition.
+
+[cols="2a,3a,2a,1a,2a", options="header", width="75%"]
+|===
+
+| Name
+| Description
+| Type
+| Required ?
+| Location
+
+| Connection
+| A reference to a tNeo4jBatchDatabaseConnection
+| Component reference
+| TRUE
+| Simple parameters
+
+| Schema definition
+| Here you can add some schema definition by adding some elements in the table
+| Table with
+
+* schema definition : choice
+* Node label : Java Expression
+* Node property : Java Expression
+| FALSE
+| Simple parameters
+
+|===
+
+=== tNeo4jBatchDatabaseClose
+
+image::images/components/tNeo4jBatchDatabaseClose_icon32.png[]
+
+This component is used to close the connection to the database, by performing a shutdown of the Neo4j.
+At this time, all schema definition are (re)created. In this step is not done, the database will be corrupted.
+
+[cols="2a,3a,2a,1a,2a", options="header", width="75%"]
+|===
+
+| Name
+| Description
+| Type
+| Required ?
+| Location
+
+| Connection
+| A reference to a tNeo4jBatchDatabaseConnection
+| Component reference
+| TRUE
+| Simple parameters
+
+|===
+
+== Import with import-tool
+
+=== tNeo4jImportTool
+
+image::images/components/tNeo4jImportTool_icon32.png[]
+
+This component is used to defined an `import-tool`.
+Before using it, you must understand what is the import-tool. SO please check this page : http://neo4j.com/docs/stable/import-tool.html
+
+Before to use it, we must create in upstream a list of CSV files with the `tFileOuputDelimited` component that correspond to nodes & relationships.
+`tFileOuputDelimited` must be configure with those settings :
+
+ * line separator : "\n"
+ * field separator : ","
+ * don't include headers
+ * File encoding : UTF-8
+
+[cols="2a,3a,2a,1a,2a", options="header", width="75%"]
+|===
+
+| Name
+| Description
+| Type
+| Required ?
+| Location
+
+| Neo4j database path
+| Path where to create the Neo4j data folder. The parent folder must exist.
+| Java expression
+| TRUE
+| Simple parameters
+
+| Nodes files
+| List of CSV files with theirs headers, that correspond to nodes to import.
+| Table of :
+
+* Path to CSV file : Java expression
+* CSV Header : Java expression
+
+| TRUE
+| Simple parameters
+
+| Relationship files files
+| List of CSV files with theirs headers, that correspond to relationships to import.
+| Table of :
+
+* Path to CSV file : Java expression
+* CSV Header : Java expression
+
+| TRUE
+| Simple parameters
+
+| Neo4j configuration
+| Here you can add some parameters to configure the Neo4j database. See this link to know the list of parameter : http://neo4j.com/docs/stable/configuration-settings.html
+| Table of key/value where
+
+* keys are Java String (quotes are not needed)
+* value are Java expression
+| False
+| Advanced settings
+
+| Import configuration
+| You can add some specific parameter for the import tool. CHeck the list here : See http://neo4j.com/docs/stable/import-tool-usage.html
+| Table with key/value where
+
+* keys are Java String (quotes are not needed)
+* value are Java expression
+| False
+| Advanced settings
+|===

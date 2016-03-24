@@ -82,13 +82,14 @@
                 NAME="INSERT_IMPORT_ID_FIELD"
                 FIELD="CHECK"
                 REQUIRED="true"
-                NUM_ROW="5">
+                NUM_ROW="5"
+                GROUP="IMPORT_INDEX_GROUP" >
             <DEFAULT>true</DEFAULT>
         </PARAMETER>
 
         <PARAMETER NAME="IMPORT_INDEX_CACHE_SIZE"
                    FIELD="INTEGER"
-                   NUM_ROW="7"
+                   NUM_ROW="6"
                    GROUP="IMPORT_INDEX_GROUP">
             <DEFAULT>0</DEFAULT>
         </PARAMETER>

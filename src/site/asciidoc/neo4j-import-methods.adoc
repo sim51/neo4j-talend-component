@@ -1,0 +1,55 @@
+== Neo4j import methods
+:revnumber: {project-version}
+
+Neo4j has several methods to import data :
+
+ * *Import Tool* : http://neo4j.com/docs/stable/import-tool.html
+ * *Batch Insert* : http://neo4j.com/docs/stable/batchinsert.html
+ * *LOAD CSV* : http://neo4j.com/docs/stable/query-load-csv.html
+
+=== Import tool
+
+You should use the import tool to initiate your database with large data.
+It's the fastest method, but don't forget to create your schema constraints/index after.
+
+**Strengths**
+
+* Multi-thread
+* Very fast
+
+**Weaknesses**
+
+* Works only to create a new database (initial import)
+* Don't create schema indexes & constraints (you must create them after)
+
+=== Batch Inserter
+
+You should use batch inserter to initiate or update your database with large/medium data.
+But don't forget to make a backup of your database before.
+
+**Strengths**
+
+* Can initiate or update a database
+* Fast
+* Non transactional
+
+**Weaknesses**
+
+* Mono-thread
+* Re-create schema constraints/indexes on shutdown
+* Can corrupt the database if the shutdown fails
+
+=== LOAD CSV
+
+You should use LOAD CSV to import your database with small/medium data.
+It's the easier way to import data into your database.
+
+**Strengths**
+
+* Very simple
+* Transactional
+* Respect schema
+
+**Weaknesses**
+
+* On large data, you have to use `periodic commits`, so we have a partials transactions

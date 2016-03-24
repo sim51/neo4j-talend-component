@@ -1,0 +1,41 @@
+= How to install
+:revnumber: {project-version}
+
+== Get component binary folder
+
+You can retrieve the last version here : link:binaries/{project-artifactId}-{project-version}_{neo4j-version}-bin.zip[download]
+
+If you need this project for a specific version of Neo4j (ie. different than ${neo4j.version}), you can  compile it from the source.
+
+=== From the source
+
+Firstly, you have to retrieve the code source :
+
+[source,bash]
+----
+$>git clone https://github.com/sim51/neo4j-talend-component.git
+----
+
+Go to the project folder, and execute the `package` maven command with the neo4j version you want (replace @@NE04J_VERSION@@).
+
+[source,bash]
+----
+$>cd neo4j-talend-component
+$>mvn package -Dneo4j.version=@@NE04J_VERSION@@
+----
+
+The component binary folder is located at `target/components`.
+
+== Configure Talend
+
+* Copy the content of the component folder somewhere in your computer, for example in `/home/bsimard/Talend/custom_components`.
+* Open your Talend Studio.
+* On the top menu, go to `Windows > Preferences`
+* On the left tree into the new window, go to `Talend > Components`
+* Into the field  'User component folder`, just put the path of the folder `/home/bsimard/Talend/custom_components`
+
+image::images/talend-install-component.png[]
+
+Now the bundle is installed, and you can find all the components into the Palette.
+
+*NB:* Just a tips for developers, you can reload custom component in Talend with the shortcut `CTRL + SHIFT + F3`

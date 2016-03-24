@@ -1,0 +1,22 @@
+= Examples
+:revnumber: {project-version}
+
+You can download a Talend example workspace here : link:binaries/TEST_NEO4J_COMPONENETS.tar.gz[download]
+
+This workspace come with threes examples. If you want to run those jobs, you have to change contexts variables on each jobs.
+
+== JDBC example
+
+It demonstrate how to communicate with Neo4j throught Talend JDBC component.
+
+image:images/example/talend-jdbc.png[]
+
+== Batch Import example
+
+image:images/example/talend-batch.png[]
+
+== Import tool example
+
+image:images/example/talend-import-tool.png[]
+
+

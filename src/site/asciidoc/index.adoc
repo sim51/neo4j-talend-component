@@ -1,0 +1,7 @@
+= Welcome
+:revnumber: {project-version}
+
+This project is a bundle of components for Talend Studio, that allows you to import data into a Neo4j database.
+
+
+
