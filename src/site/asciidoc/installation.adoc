@@ -3,7 +3,7 @@
 
 == Get component binary folder
 
-You can retrieve the last version here : link:binaries/{project-artifactId}-{project-version}_{neo4j-version}-bin.zip[download]
+You can retrieve the last version here : link:{project-artifactId}-{project-version}_{neo4j-version}-bin.zip[download]
 
 If you need this project for a specific version of Neo4j (ie. different than ${neo4j.version}), you can  compile it from the source.
 
