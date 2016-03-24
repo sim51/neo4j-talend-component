@@ -35,12 +35,12 @@ public class Neo4jImportToolTest  {
 
         // Nodes file
         final File actors = new File(ClassLoader.getSystemResource("importTool/actors.csv").getFile());
-        final File movies = new File(ClassLoader.getSystemResource("importTool/movies.csv").getFile());
         List<Map<String, String>> nodes = new ArrayList<>();
         nodes.add(new HashMap<String, String>() {{
             put(Neo4jImportTool.FILE_KEY,actors.getAbsolutePath());
             put(Neo4jImportTool.HEADERS_KEY, "personId:ID,name,:LABEL");
         }});
+        final File movies = new File(ClassLoader.getSystemResource("importTool/movies.csv").getFile());
         nodes.add(new HashMap<String, String>() {{
             put(Neo4jImportTool.FILE_KEY,movies.getAbsolutePath());
             put(Neo4jImportTool.HEADERS_KEY, "movieId:ID,title,year:int,:LABEL");
