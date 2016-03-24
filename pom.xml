@@ -368,7 +368,7 @@
                 <executions>
                     <execution>
                         <id>scm-publish</id>
-                        <phase>deploy</phase>
+                        <phase>site</phase>
                         <goals>
                             <goal>publish-scm</goal>
                         </goals>
