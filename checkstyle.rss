@@ -19,9 +19,9 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>neo4j-talend-component - Checkstyle report</title>
+    <title>Neo4j Talend components - Checkstyle report</title>
     <link>${project.url}</link>
-    <description>neo4j-talend-component - Checkstyle report</description>
+    <description>Neo4j Talend components - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>

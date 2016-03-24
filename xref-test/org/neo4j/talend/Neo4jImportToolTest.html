@@ -43,12 +43,12 @@
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>          <em class="jxr_comment">// Nodes file</em>
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>          <strong class="jxr_keyword">final</strong> File actors = <strong class="jxr_keyword">new</strong> File(ClassLoader.getSystemResource(<span class="jxr_string">"importTool/actors.csv"</span>).getFile());
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">final</strong> File movies = <strong class="jxr_keyword">new</strong> File(ClassLoader.getSystemResource(<span class="jxr_string">"importTool/movies.csv"</span>).getFile());
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>          List&lt;Map&lt;String, String&gt;&gt; nodes = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>          nodes.add(<strong class="jxr_keyword">new</strong> HashMap&lt;String, String&gt;() {{
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>              put(Neo4jImportTool.FILE_KEY,actors.getAbsolutePath());
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>              put(Neo4jImportTool.HEADERS_KEY, <span class="jxr_string">"personId:ID,name,:LABEL"</span>);
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>          }});
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          List&lt;Map&lt;String, String&gt;&gt; nodes = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          nodes.add(<strong class="jxr_keyword">new</strong> HashMap&lt;String, String&gt;() {{
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>              put(Neo4jImportTool.FILE_KEY,actors.getAbsolutePath());
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>              put(Neo4jImportTool.HEADERS_KEY, <span class="jxr_string">"personId:ID,name,:LABEL"</span>);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          }});
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          <strong class="jxr_keyword">final</strong> File movies = <strong class="jxr_keyword">new</strong> File(ClassLoader.getSystemResource(<span class="jxr_string">"importTool/movies.csv"</span>).getFile());
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>          nodes.add(<strong class="jxr_keyword">new</strong> HashMap&lt;String, String&gt;() {{
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>              put(Neo4jImportTool.FILE_KEY,movies.getAbsolutePath());
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>              put(Neo4jImportTool.HEADERS_KEY, <span class="jxr_string">"movieId:ID,title,year:int,:LABEL"</span>);
