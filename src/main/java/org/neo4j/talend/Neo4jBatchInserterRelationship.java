@@ -74,6 +74,8 @@ public class Neo4jBatchInserterRelationship extends Neo4jBatchInserterAbstract {
             if(StringUtils.isNotEmpty(type)) {
 
                 properties.remove(relationshipTypeField);
+                properties.remove(startIndexField);
+                properties.remove(endIndexField);
 
                 if (direction.endsWith("OUTGOING")) {
                     this.batchDb.getInserter().createRelationship(startNode, endNode, DynamicRelationshipType.withName(type), properties);
