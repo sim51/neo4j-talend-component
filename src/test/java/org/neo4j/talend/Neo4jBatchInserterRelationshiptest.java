@@ -6,6 +6,7 @@ import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
@@ -23,11 +24,11 @@ public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
         nodeInserter.finish();
 
         // create relationship
-        Neo4jBatchInserterRelationship nodeRelationship =  getNeo4jBatchInserterRelationship();
+        Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(true);
         for(int i=0; i < 100; i++) {
-            nodeRelationship.create(DummyTalendPojo.getDummyTalendPojo(i), DummyTalendPojo.getColumnList());
+            batchInserterRelationship.create(DummyTalendPojo.getDummyTalendPojo(i), DummyTalendPojo.getColumnList());
         }
-        nodeRelationship.finish();
+        batchInserterRelationship.finish();
 
         // check the database data
         batchDb.shutdown();
@@ -39,5 +40,23 @@ public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
             Assert.assertEquals("+-------+\n| count |\n+-------+\n| 100   |\n+-------+\n1 row\n", result);
         }
         graphDb.shutdown();
+    }
+
+    @Test
+    public void insert_edge_on_node_not_found_should_succeed() throws IOException {
+        DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo(2);
+        Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(true);
+        batchInserterRelationship.create(pojo, DummyTalendPojo.getColumnList());
+        batchInserterRelationship.finish();
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void insert_edge_on_node_not_found_should_fail() throws IOException {
+        DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo(2);
+        Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(false);
+        batchInserterRelationship.create(pojo, DummyTalendPojo.getColumnList());
+        batchInserterRelationship.finish();
+
+        Assert.fail();
     }
 }

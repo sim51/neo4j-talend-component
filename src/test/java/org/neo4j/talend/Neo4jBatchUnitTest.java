@@ -41,7 +41,7 @@ public class Neo4jBatchUnitTest {
         return new Neo4jBatchInserterNode(batchDb, LABEL_FIELD, INDEX_NAME, IMPORT_ID, insertIndexFieldName, 100);
     }
 
-    protected Neo4jBatchInserterRelationship getNeo4jBatchInserterRelationship() throws IOException {
-        return new Neo4jBatchInserterRelationship(batchDb, REL_TYPE_FIELD, "OUTGOING", INDEX_NAME, IMPORT_ID, INDEX_NAME, IMPORT_ID);
+    protected Neo4jBatchInserterRelationship getNeo4jBatchInserterRelationship(Boolean skipOnError) throws IOException {
+        return new Neo4jBatchInserterRelationship(batchDb, REL_TYPE_FIELD, "OUTGOING", INDEX_NAME, IMPORT_ID, INDEX_NAME, IMPORT_ID, skipOnError);
     }
 }

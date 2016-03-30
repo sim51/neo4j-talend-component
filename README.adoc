@@ -16,4 +16,7 @@ image:https://travis-ci.org/sim51/neo4j-talend-component.svg?branch=master["Buil
 
 Project website : http://sim51.github.io/neo4j-talend-component/
 
+== TODO
+
+* Remake packaging phase for the assembly (there is some cobertura thing into compile class on the archive)
 

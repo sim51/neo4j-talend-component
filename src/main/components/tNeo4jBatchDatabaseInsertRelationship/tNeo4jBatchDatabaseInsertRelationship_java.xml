@@ -105,6 +105,19 @@
 
     </PARAMETERS>
 
+
+    <ADVANCED_PARAMETERS>
+
+        <PARAMETER
+                NAME="SKIP_ON_ERROR"
+                FIELD="CHECK"
+                REQUIRED="true"
+                NUM_ROW="1">
+            <DEFAULT>true</DEFAULT>
+        </PARAMETER>
+
+    </ADVANCED_PARAMETERS>
+
     <CODEGENERATION>
         <IMPORTS/>
     </CODEGENERATION>

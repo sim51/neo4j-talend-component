@@ -137,6 +137,12 @@ This permit to retrieve the index name.
 | TRUE
 | Simple parameters
 
+| Skip on error ?
+| If start or end node is not found, what we do ? Do we continue ?
+| Boolean
+| TRUE
+| Advanced parameters
+
 |===
 
 === tNeo4jBatchDatabaseSchema

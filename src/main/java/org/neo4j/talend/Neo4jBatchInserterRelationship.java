@@ -2,6 +2,7 @@ package org.neo4j.talend;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+
 import org.neo4j.graphdb.DynamicRelationshipType;
 
 import java.io.IOException;
@@ -19,10 +20,14 @@ public class Neo4jBatchInserterRelationship extends Neo4jBatchInserterAbstract {
     private String endIndexName;
     private String endIndexField;
 
+    private Boolean skipOnError;
+
     /**
      * Constructor.
      */
-    public Neo4jBatchInserterRelationship(Neo4jBatchDatabase graphDb, String relationshipTypeField, String direction, String startIndexName, String startIndexField, String endIndexName, String endIndexField) throws IOException {
+    public Neo4jBatchInserterRelationship(Neo4jBatchDatabase graphDb, String relationshipTypeField, String direction,
+                                          String startIndexName, String startIndexField, String endIndexName, String endIndexField,
+                                          Boolean skipOnError) throws IOException {
         super(graphDb);
 
         if (StringUtils.isEmpty(relationshipTypeField)) {
@@ -55,36 +60,52 @@ public class Neo4jBatchInserterRelationship extends Neo4jBatchInserterAbstract {
         }
         this.endIndexField = endIndexField;
 
+        this.skipOnError = skipOnError;
+
         this.batchDb = graphDb;
     }
 
     /**
      * Create the relationship.
      *
-     * @param incoming Talend incoming object
+     * @param incoming   Talend incoming object
      * @param columnList Attribute list of Talend object
      */
     public void create(Object incoming, List<String> columnList) {
         try {
-            long startNode = this.batchDb.findNodeInBatchIndex(startIndexName, this.getObjectProperty(incoming, startIndexField));
-            long endNode = this.batchDb.findNodeInBatchIndex(endIndexName, this.getObjectProperty(incoming, endIndexField));
+            Long startNode = this.batchDb.findNodeInBatchIndex(startIndexName, this.getObjectProperty(incoming, startIndexField));
+            Long endNode = this.batchDb.findNodeInBatchIndex(endIndexName, this.getObjectProperty(incoming, endIndexField));
             Map<String, Object> properties = constructMapFromObject(incoming, columnList);
 
-            String type = (String) this.getObjectProperty(incoming, relationshipTypeField);
-            if(StringUtils.isNotEmpty(type)) {
+            if (startNode != null && endNode != null) {
 
-                properties.remove(relationshipTypeField);
-                properties.remove(startIndexField);
-                properties.remove(endIndexField);
+                String type = (String) this.getObjectProperty(incoming, relationshipTypeField);
+                if (StringUtils.isNotEmpty(type)) {
 
-                if (direction.endsWith("OUTGOING")) {
-                    this.batchDb.getInserter().createRelationship(startNode, endNode, DynamicRelationshipType.withName(type), properties);
+                    properties.remove(relationshipTypeField);
+                    properties.remove(startIndexField);
+                    properties.remove(endIndexField);
+
+                    if (direction.endsWith("OUTGOING")) {
+                        this.batchDb.getInserter()
+                                .createRelationship(startNode, endNode, DynamicRelationshipType.withName(type),
+                                        properties);
+                    } else {
+                        this.batchDb.getInserter()
+                                .createRelationship(endNode, startNode, DynamicRelationshipType.withName(type),
+                                        properties);
+                    }
                 } else {
-                    this.batchDb.getInserter().createRelationship(endNode, startNode, DynamicRelationshipType.withName(type), properties);
+                    log.trace("Ignoring incoming object {" + properties.toString() + "} due to none relation type");
                 }
-            }
-            else {
-                log.trace("Ignoring ioncoming object {" + properties.toString() + "} due to none relation type");
+            } else {
+                String msg = "Can't find start node " + startNode + " or end node " + endNode;
+                if(skipOnError) {
+                    log.trace(msg);
+                }
+                else {
+                    throw new RuntimeException(msg);
+                }
             }
 
         } catch (IllegalAccessException e) {
