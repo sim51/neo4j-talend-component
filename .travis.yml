@@ -17,7 +17,7 @@ after_success:
   - eval "$(ssh-agent -s)" #start the ssh agent
   - chmod 600 .travis-key
   - ssh-add .travis-key
-  - if [[ "$NEO4J_VERSION" == "2.3.2" && "$TRAVIS_JDK_VERSION" == "openjdk7" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean site; fi
+  - if [[ "$NEO4J_VERSION" == "2.3.2" && "$TRAVIS_JDK_VERSION" == "openjdk7" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean package site; fi
 notifications:
   email:
     on_success: never
