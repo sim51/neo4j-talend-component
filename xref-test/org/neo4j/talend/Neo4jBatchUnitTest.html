@@ -49,8 +49,8 @@
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> Neo4jBatchInserterNode(batchDb, LABEL_FIELD, INDEX_NAME, IMPORT_ID, insertIndexFieldName, 100);
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>      }
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">protected</strong> Neo4jBatchInserterRelationship getNeo4jBatchInserterRelationship() <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> Neo4jBatchInserterRelationship(batchDb, REL_TYPE_FIELD, <span class="jxr_string">"OUTGOING"</span>, INDEX_NAME, IMPORT_ID, INDEX_NAME, IMPORT_ID);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">protected</strong> Neo4jBatchInserterRelationship getNeo4jBatchInserterRelationship(Boolean skipOnError) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> Neo4jBatchInserterRelationship(batchDb, REL_TYPE_FIELD, <span class="jxr_string">"OUTGOING"</span>, INDEX_NAME, IMPORT_ID, INDEX_NAME, IMPORT_ID, skipOnError);
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>      }
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  }
 </pre>
