@@ -173,13 +173,16 @@
                 </executions>
             </plugin>
 
-            <!-- Generate project jar into 'comonent/lib' folder -->
+            <!-- Generate project jar into 'component/lib' folder -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>${maven-jar-plugin}</version>
                 <configuration>
                     <outputDirectory>${project.build.directory}/components/lib</outputDirectory>
+                    <excludes>
+                        <exclude>**/tNeo4j*</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
@@ -279,7 +282,7 @@
                         <descriptor>src/main/assembly/zip.xml</descriptor>
                     </descriptors>
                     <finalName>${project.artifactId}-${project.version}_${neo4j.version}</finalName>
-                    <outputDirectory>${project.build.directory}/site</outputDirectory>
+                    <outputDirectory>${project.build.directory}/site/binaries</outputDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -364,6 +367,7 @@
                     <checkinComment>Publishing Site Docs for ${project.artifactId}:${project.version}</checkinComment>
                     <content>${project.reporting.outputDirectory}</content>
                     <scmBranch>gh-pages</scmBranch>
+                    <tryUpdate>true</tryUpdate>
                 </configuration>
                 <executions>
                     <execution>
@@ -410,11 +414,13 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>${maven.plugin.projectinfo}</version>
             </plugin>
+            <!-- Disable cobertura plugin due to bad jar compile in same times
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>${maven.plugin.cobertura}</version>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
