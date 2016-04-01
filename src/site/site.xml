@@ -26,8 +26,13 @@
             <item name="List of Talend components" href="components.html" />
             <item name="Examples" href="examples.html" />
             <item name="Neo4j import methods" href="neo4j-import-methods.html" />
+        </menu>
+
+        <menu name="PROJECT TOOLS">
             <item name="JavaDocs" href="apidocs/index.html" />
             <item name="Source Repository" href="${scm.url}" />
+            <item name="Continuous Integration" href="https://travis-ci.org/sim51/neo4j-talend-component" />
+            <item name="Code coverage" href="https://coveralls.io/github/sim51/neo4j-talend-component" />
         </menu>
 
         <menu ref="reports" />
@@ -37,7 +42,7 @@
 
     <skin>
         <groupId>${site.skin.groupId}</groupId>
-        <artifactId>${site.skin.artefactId}</artifactId>
+        <artifactId>${site.skin.artifactId}</artifactId>
         <version>${site.skin.version}</version>
     </skin>
 
