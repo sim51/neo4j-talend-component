@@ -354,7 +354,7 @@
                     <!-- Adding custom skin -->
                     <dependency>
                         <groupId>${site.skin.groupId}</groupId>
-                        <artifactId>${site.skin.artefactId}</artifactId>
+                        <artifactId>${site.skin.artifactId}</artifactId>
                         <version>${site.skin.version}</version>
                     </dependency>
                 </dependencies>
