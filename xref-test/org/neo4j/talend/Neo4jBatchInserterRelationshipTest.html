@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>Neo4jBatchInserterRelationshiptest xref</title>
+<title>Neo4jBatchInserterRelationshipTest xref</title>
 <link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
 </head>
 <body>
-<div id="overview"><a href="../../../../testapidocs/org/neo4j/talend/Neo4jBatchInserterRelationshiptest.html">View Javadoc</a></div><pre>
+<div id="overview"><a href="../../../../testapidocs/org/neo4j/talend/Neo4jBatchInserterRelationshipTest.html">View Javadoc</a></div><pre>
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> org.neo4j.talend;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> org.junit.Assert;
@@ -17,23 +17,23 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.util.List;
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../org/neo4j/talend/Neo4jBatchInserterRelationshiptest.html">Neo4jBatchInserterRelationshiptest</a> <strong class="jxr_keyword">extends</strong> <a href="../../../org/neo4j/talend/Neo4jBatchUnitTest.html">Neo4jBatchUnitTest</a> {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../org/neo4j/talend/Neo4jBatchInserterRelationshipTest.html">Neo4jBatchInserterRelationshipTest</a> <strong class="jxr_keyword">extends</strong> <a href="../../../org/neo4j/talend/Neo4jBatchUnitTest.html">Neo4jBatchUnitTest</a> {
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>      @Test
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> insert_edge_should_succeed() <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>          Neo4jBatchInserterNode nodeInserter =  getNeo4jBatchInserterNode(false);
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          Neo4jBatchInserterNode nodeInserter = getNeo4jBatchInserterNode(false);
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>  
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>          <em class="jxr_comment">// populate the db with nodes</em>
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>          List&lt;String&gt; columns = DummyTalendPojo.getColumnList();
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i=0; i &lt; 100; i++) {
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 100; i++) {
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>              <a href="../../../org/neo4j/talend/DummyTalendPojo.html">DummyTalendPojo</a> pojo = DummyTalendPojo.getDummyTalendPojo(i);
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>              nodeInserter.create(pojo, columns);
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>          }
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>          nodeInserter.finish();
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>          <em class="jxr_comment">// create relationship</em>
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>          Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i=0; i &lt; 100; i++) {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          Neo4jBatchInserterRelationship batchInserterRelationship = getNeo4jBatchInserterRelationship(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 100; i++) {
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>              batchInserterRelationship.create(DummyTalendPojo.getDummyTalendPojo(i), DummyTalendPojo.getColumnList());
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>          }
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>          batchInserterRelationship.finish();
@@ -53,7 +53,7 @@
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>      @Test
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> insert_edge_on_node_not_found_should_succeed() <strong class="jxr_keyword">throws</strong> IOException {
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>          <a href="../../../org/neo4j/talend/DummyTalendPojo.html">DummyTalendPojo</a> pojo = DummyTalendPojo.getDummyTalendPojo(2);
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>          Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          Neo4jBatchInserterRelationship batchInserterRelationship = getNeo4jBatchInserterRelationship(<strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>          batchInserterRelationship.create(pojo, DummyTalendPojo.getColumnList());
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>          batchInserterRelationship.finish();
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      }
@@ -61,7 +61,7 @@
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      @Test(expected = RuntimeException.<strong class="jxr_keyword">class</strong>)
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> insert_edge_on_node_not_found_should_fail() <strong class="jxr_keyword">throws</strong> IOException {
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>          <a href="../../../org/neo4j/talend/DummyTalendPojo.html">DummyTalendPojo</a> pojo = DummyTalendPojo.getDummyTalendPojo(2);
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>          Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(false);
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          Neo4jBatchInserterRelationship batchInserterRelationship = getNeo4jBatchInserterRelationship(false);
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>          batchInserterRelationship.create(pojo, DummyTalendPojo.getColumnList());
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>          batchInserterRelationship.finish();
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  
