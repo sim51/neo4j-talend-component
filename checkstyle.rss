@@ -46,21 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#tNeo4jImportTool.tNeo4jImportTool_messages.properties">tNeo4jImportTool/tNeo4jImportTool_messages.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#tNeo4jBatchDatabaseSchema.tNeo4jBatchDatabaseSchema_messages.properties">tNeo4jBatchDatabaseSchema/tNeo4jBatchDatabaseSchema_messages.properties</a>
+                  <a href="${project.url}/checkstyle.html#tNeo4jBatchDatabaseInsertRelationship.tNeo4jBatchDatabaseInsertRelationship_messages.properties">tNeo4jBatchDatabaseInsertRelationship/tNeo4jBatchDatabaseInsertRelationship_messages.properties</a>
                 </td>
                 <td>
                   0
@@ -88,7 +74,105 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#tNeo4jBatchDatabaseInsertRelationship.tNeo4jBatchDatabaseInsertRelationship_messages.properties">tNeo4jBatchDatabaseInsertRelationship/tNeo4jBatchDatabaseInsertRelationship_messages.properties</a>
+                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchDatabase.java">org/neo4j/talend/Neo4jBatchDatabase.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  53
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#tNeo4jBatchDatabaseClose.tNeo4jBatchDatabaseClose_messages.properties">tNeo4jBatchDatabaseClose/tNeo4jBatchDatabaseClose_messages.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchInserterRelationship.java">org/neo4j/talend/Neo4jBatchInserterRelationship.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  55
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchInserterAbstract.java">org/neo4j/talend/Neo4jBatchInserterAbstract.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#tNeo4jBatchDatabaseSchema.tNeo4jBatchDatabaseSchema_messages.properties">tNeo4jBatchDatabaseSchema/tNeo4jBatchDatabaseSchema_messages.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jImportTool.java">org/neo4j/talend/Neo4jImportTool.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  42
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchInserterNode.java">org/neo4j/talend/Neo4jBatchInserterNode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#tNeo4jImportTool.tNeo4jImportTool_messages.properties">tNeo4jImportTool/tNeo4jImportTool_messages.properties</a>
                 </td>
                 <td>
                   0
@@ -112,90 +196,6 @@ under the License.
                 </td>
                 <td>
                   0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchDatabase.java">org/neo4j/talend/Neo4jBatchDatabase.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  52
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jImportTool.java">org/neo4j/talend/Neo4jImportTool.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  43
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchInserterRelationship.java">org/neo4j/talend/Neo4jBatchInserterRelationship.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  55
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchInserterNode.java">org/neo4j/talend/Neo4jBatchInserterNode.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  39
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#tNeo4jBatchDatabaseClose.tNeo4jBatchDatabaseClose_messages.properties">tNeo4jBatchDatabaseClose/tNeo4jBatchDatabaseClose_messages.properties</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#org.neo4j.talend.Neo4jBatchInserterAbstract.java">org/neo4j/talend/Neo4jBatchInserterAbstract.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  20
                 </td>
               </tr>
                       </tbody>
