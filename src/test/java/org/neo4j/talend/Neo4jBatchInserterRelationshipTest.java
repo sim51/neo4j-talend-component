@@ -9,23 +9,23 @@ import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import java.io.IOException;
 import java.util.List;
 
-public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
+public class Neo4jBatchInserterRelationshipTest extends Neo4jBatchUnitTest {
 
     @Test
     public void insert_edge_should_succeed() throws Exception {
-        Neo4jBatchInserterNode nodeInserter =  getNeo4jBatchInserterNode(false);
+        Neo4jBatchInserterNode nodeInserter = getNeo4jBatchInserterNode(false);
 
         // populate the db with nodes
         List<String> columns = DummyTalendPojo.getColumnList();
-        for(int i=0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo(i);
             nodeInserter.create(pojo, columns);
         }
         nodeInserter.finish();
 
         // create relationship
-        Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(true);
-        for(int i=0; i < 100; i++) {
+        Neo4jBatchInserterRelationship batchInserterRelationship = getNeo4jBatchInserterRelationship(true);
+        for (int i = 0; i < 100; i++) {
             batchInserterRelationship.create(DummyTalendPojo.getDummyTalendPojo(i), DummyTalendPojo.getColumnList());
         }
         batchInserterRelationship.finish();
@@ -45,7 +45,7 @@ public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
     @Test
     public void insert_edge_on_node_not_found_should_succeed() throws IOException {
         DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo(2);
-        Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(true);
+        Neo4jBatchInserterRelationship batchInserterRelationship = getNeo4jBatchInserterRelationship(true);
         batchInserterRelationship.create(pojo, DummyTalendPojo.getColumnList());
         batchInserterRelationship.finish();
     }
@@ -53,7 +53,7 @@ public class Neo4jBatchInserterRelationshiptest extends Neo4jBatchUnitTest {
     @Test(expected = RuntimeException.class)
     public void insert_edge_on_node_not_found_should_fail() throws IOException {
         DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo(2);
-        Neo4jBatchInserterRelationship batchInserterRelationship =  getNeo4jBatchInserterRelationship(false);
+        Neo4jBatchInserterRelationship batchInserterRelationship = getNeo4jBatchInserterRelationship(false);
         batchInserterRelationship.create(pojo, DummyTalendPojo.getColumnList());
         batchInserterRelationship.finish();
 

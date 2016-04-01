@@ -21,6 +21,7 @@ public class DummyTalendPojo {
     public static DummyTalendPojo getDummyTalendPojo() {
         return DummyTalendPojo.getDummyTalendPojo(UUID.randomUUID().toString());
     }
+
     public static DummyTalendPojo getDummyTalendPojo(Object id) {
         DummyTalendPojo pojo = new DummyTalendPojo();
 

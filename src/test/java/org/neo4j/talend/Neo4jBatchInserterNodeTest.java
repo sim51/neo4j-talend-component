@@ -10,11 +10,11 @@ import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import java.util.List;
 import java.util.Map;
 
-public class Neo4jBatchInserterNodeTest extends Neo4jBatchUnitTest{
+public class Neo4jBatchInserterNodeTest extends Neo4jBatchUnitTest {
 
     @Test
     public void compute_label_from_incoming_object_should_succeed() throws Exception {
-        Neo4jBatchInserterNode nodeInserter =  getNeo4jBatchInserterNode(false);
+        Neo4jBatchInserterNode nodeInserter = getNeo4jBatchInserterNode(false);
         DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo();
 
         Label[] labels = nodeInserter.computeLabels(pojo);
@@ -24,11 +24,11 @@ public class Neo4jBatchInserterNodeTest extends Neo4jBatchUnitTest{
 
     @Test
     public void insert_node_should_succeed_with_populated_index() throws Exception {
-        Neo4jBatchInserterNode nodeInserter =  getNeo4jBatchInserterNode(false);
+        Neo4jBatchInserterNode nodeInserter = getNeo4jBatchInserterNode(false);
 
         // populate the db
         List<String> columns = DummyTalendPojo.getColumnList();
-        for(int i=0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo();
             nodeInserter.create(pojo, columns);
         }
@@ -51,14 +51,14 @@ public class Neo4jBatchInserterNodeTest extends Neo4jBatchUnitTest{
     @Test
     public void update_node_should_succeed() throws Exception {
         // populate the db
-        Neo4jBatchInserterNode nodeInserter =  getNeo4jBatchInserterNode(false);
+        Neo4jBatchInserterNode nodeInserter = getNeo4jBatchInserterNode(false);
         List<String> columns = DummyTalendPojo.getColumnList();
         DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo();
         nodeInserter.create(pojo, columns);
         nodeInserter.finish();
 
         // By indexing the import id, I update the last node
-        nodeInserter =  getNeo4jBatchInserterNode(true);
+        nodeInserter = getNeo4jBatchInserterNode(true);
         nodeInserter.create(pojo, columns);
         nodeInserter.finish();
 
@@ -74,7 +74,7 @@ public class Neo4jBatchInserterNodeTest extends Neo4jBatchUnitTest{
 
     @Test
     public void type_convertion_for_neo4j_should_work() throws Exception {
-        Neo4jBatchInserterNode nodeInserter =  getNeo4jBatchInserterNode(false);
+        Neo4jBatchInserterNode nodeInserter = getNeo4jBatchInserterNode(false);
         DummyTalendPojo pojo = DummyTalendPojo.getDummyTalendPojo();
 
         Map<String, Object> attrs = nodeInserter.constructMapFromObject(pojo, DummyTalendPojo.getColumnList());
