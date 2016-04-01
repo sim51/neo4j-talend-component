@@ -1,3 +1,7 @@
+cache:
+  directories:
+    - $HOME/.m2
+install: true
 language: java
 jdk:
 - openjdk7
@@ -18,7 +22,7 @@ after_success:
   - chmod 600 .travis-key
   - ssh-add .travis-key
   - if [[ "$TRAVIS_PULL_REQUEST" = "false"  && "$NEO4J_VERSION" == "2.3.2" && "$TRAVIS_JDK_VERSION" == "openjdk7" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean package site; fi
-  - if [[ "$TRAVIS_PULL_REQUEST" = "false"  && "$NEO4J_VERSION" == "2.3.2" && "$TRAVIS_JDK_VERSION" == "openjdk7" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean test coveralls:report -Pcoverage -Dcoverall.token=$COVERALL_TOKEN; fi
+  - if [[ "$TRAVIS_PULL_REQUEST" = "false"  && "$NEO4J_VERSION" == "2.3.2" && "$TRAVIS_JDK_VERSION" == "openjdk7" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean cobertura:cobertura coveralls:report -Pcoverage -Dcoverall.token=$COVERALL_TOKEN; fi
 notifications:
   email:
     on_success: never
