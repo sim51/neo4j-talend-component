@@ -71,7 +71,7 @@
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>          params.add(<strong class="jxr_keyword">this</strong>.createNeo4jConfigFile());
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>          <em class="jxr_comment">// Adding advanced configuration</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">for</strong>(Map.Entry&lt;String, String&gt; entry : importConfiguration.entrySet()) {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, String&gt; entry : importConfiguration.entrySet()) {
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>              params.add(<span class="jxr_string">"--"</span> + entry.getKey());
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>              params.add(entry.getValue());
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>          }
@@ -126,7 +126,7 @@
 <a class="jxr_linenumber" name="L118" href="#L118">118</a> 
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>         <em class="jxr_comment">// write header into it</em>
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>         BufferedWriter bw = <strong class="jxr_keyword">new</strong> BufferedWriter(<strong class="jxr_keyword">new</strong> FileWriter(path.toFile()));
-<a class="jxr_linenumber" name="L121" href="#L121">121</a>         <strong class="jxr_keyword">for</strong>(Map.Entry&lt;String,String&gt; entry : neo4jConfiguration.entrySet()) {
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>         <strong class="jxr_keyword">for</strong> (Map.Entry&lt;String, String&gt; entry : neo4jConfiguration.entrySet()) {
 <a class="jxr_linenumber" name="L122" href="#L122">122</a>             bw.write(entry.getKey() + <span class="jxr_string">"="</span> + entry.getValue());
 <a class="jxr_linenumber" name="L123" href="#L123">123</a>             bw.newLine();
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>         }

@@ -45,12 +45,12 @@
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * Constructor</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @param batchDb Batch inserter database</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * @param labelsField Field name where to find labels</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * @param batchIndexName Batch index name</em>
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * @param batchIndexFieldName Batch index field name</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @param batchDb              Batch inserter database</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * @param labelsField          Field name where to find labels</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * @param batchIndexName       Batch index name</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * @param batchIndexFieldName  Batch index field name</em>
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     * @param insertIndexFieldName If we have to save the index field</em>
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * @param indexCacheSize Size of the cache index</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * @param indexCacheSize       Size of the cache index</em>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * @throws IOException</em>
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>      <strong class="jxr_keyword">public</strong> <a href="../../../org/neo4j/talend/Neo4jBatchInserterNode.html">Neo4jBatchInserterNode</a>(<a href="../../../org/neo4j/talend/Neo4jBatchDatabase.html">Neo4jBatchDatabase</a> batchDb, String labelsField, String batchIndexName, String batchIndexFieldName, Boolean insertIndexFieldName, Integer indexCacheSize) <strong class="jxr_keyword">throws</strong> IOException {
@@ -95,10 +95,10 @@
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>              Label[] labels = <strong class="jxr_keyword">this</strong>.computeLabels(incoming);
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>  
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>              <em class="jxr_comment">// Remove none necessary fields (importId, &amp; label)</em>
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>              <strong class="jxr_keyword">if</strong>(StringUtils.isNotEmpty(<strong class="jxr_keyword">this</strong>.labelsField)) {
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>              <strong class="jxr_keyword">if</strong> (StringUtils.isNotEmpty(<strong class="jxr_keyword">this</strong>.labelsField)) {
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>                  properties.remove(<strong class="jxr_keyword">this</strong>.labelsField);
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>              }
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>              <strong class="jxr_keyword">if</strong>(!<strong class="jxr_keyword">this</strong>.insertIndexFieldName) {
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              <strong class="jxr_keyword">if</strong> (!<strong class="jxr_keyword">this</strong>.insertIndexFieldName) {
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>                  properties.remove(<strong class="jxr_keyword">this</strong>.batchIndexFieldName);
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>              }
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>  
@@ -113,7 +113,7 @@
 <a class="jxr_linenumber" name="L105" href="#L105">105</a> 
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>                 <em class="jxr_comment">// update labels</em>
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>                 List&lt;Label&gt; labelList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;(Arrays.asList(labels));
-<a class="jxr_linenumber" name="L108" href="#L108">108</a>                 <strong class="jxr_keyword">for</strong>(Label lab : <strong class="jxr_keyword">this</strong>.batchDb.getInserter().getNodeLabels(id)) {
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>                 <strong class="jxr_keyword">for</strong> (Label lab : <strong class="jxr_keyword">this</strong>.batchDb.getInserter().getNodeLabels(id)) {
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>                     labelList.add(lab);
 <a class="jxr_linenumber" name="L110" href="#L110">110</a>                 }
 <a class="jxr_linenumber" name="L111" href="#L111">111</a>                 Label[] mergeLabels = labelList.toArray(<strong class="jxr_keyword">new</strong> Label[labelList.size()]);
@@ -146,7 +146,7 @@
 <a class="jxr_linenumber" name="L138" href="#L138">138</a> 
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>             String labelList = (String) <strong class="jxr_keyword">this</strong>.getObjectProperty(incoming, <strong class="jxr_keyword">this</strong>.labelsField);
 <a class="jxr_linenumber" name="L140" href="#L140">140</a> 
-<a class="jxr_linenumber" name="L141" href="#L141">141</a>             <strong class="jxr_keyword">if</strong>(StringUtils.isNotEmpty(labelList)) {
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>             <strong class="jxr_keyword">if</strong> (StringUtils.isNotEmpty(labelList)) {
 <a class="jxr_linenumber" name="L142" href="#L142">142</a>                 String[] labelTab = labelList.split(<span class="jxr_string">";"</span>);
 <a class="jxr_linenumber" name="L143" href="#L143">143</a>                 labels = <strong class="jxr_keyword">new</strong> Label[labelTab.length];
 <a class="jxr_linenumber" name="L144" href="#L144">144</a>                 <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; labelTab.length; i++) {
