@@ -36,7 +36,7 @@ public class Neo4jBatchInserterRelationshipTest extends Neo4jBatchUnitTest {
         // Testing it with real graphdb
         GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase(dbPath);
         try (Transaction tx = graphDb.beginTx()) {
-            String result = graphDb.execute("MATCH ()-[r:" + REL_TYPE + "]-() RETURN count(r) AS count").resultAsString();
+            String result = graphDb.execute("MATCH ()-[r:" + REL_TYPE + "]->() RETURN count(r) AS count").resultAsString();
             Assert.assertEquals("+-------+\n| count |\n+-------+\n| 100   |\n+-------+\n1 row\n", result);
         }
         graphDb.shutdown();
