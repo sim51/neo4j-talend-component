@@ -63,7 +63,7 @@ public class Neo4jImportTool {
         params.add(this.createNeo4jConfigFile());
 
         // Adding advanced configuration
-        for(Map.Entry<String, String> entry : importConfiguration.entrySet()) {
+        for (Map.Entry<String, String> entry : importConfiguration.entrySet()) {
             params.add("--" + entry.getKey());
             params.add(entry.getValue());
         }
@@ -118,7 +118,7 @@ public class Neo4jImportTool {
 
         // write header into it
         BufferedWriter bw = new BufferedWriter(new FileWriter(path.toFile()));
-        for(Map.Entry<String,String> entry : neo4jConfiguration.entrySet()) {
+        for (Map.Entry<String, String> entry : neo4jConfiguration.entrySet()) {
             bw.write(entry.getKey() + "=" + entry.getValue());
             bw.newLine();
         }

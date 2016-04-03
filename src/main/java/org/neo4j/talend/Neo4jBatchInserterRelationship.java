@@ -100,10 +100,9 @@ public class Neo4jBatchInserterRelationship extends Neo4jBatchInserterAbstract {
                 }
             } else {
                 String msg = "Can't find start node " + startNode + " or end node " + endNode;
-                if(skipOnError) {
+                if (skipOnError) {
                     log.trace(msg);
-                }
-                else {
+                } else {
                     throw new RuntimeException(msg);
                 }
             }

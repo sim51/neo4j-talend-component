@@ -49,10 +49,10 @@ public class Neo4jBatchDatabase {
     /**
      * Constructor that create an embedded database.
      *
-     * @param path Path of the graph database folder
+     * @param path          Path of the graph database folder
      * @param configuration Configuration map of database
      */
-    public Neo4jBatchDatabase(String path, Map<String,String> configuration) {
+    public Neo4jBatchDatabase(String path, Map<String, String> configuration) {
         try {
             // Initialize batch inserter
             this.inserter = BatchInserters.inserter(new File(path), configuration);
@@ -79,18 +79,17 @@ public class Neo4jBatchDatabase {
     /**
      * Create and store the index, if it doesn't exist.
      *
-     * @param indexName Name of the index
+     * @param indexName      Name of the index
      * @param indexCacheSize Number of element into the cache size for the index
      */
     public void createBatchIndex(String indexName, Integer indexCacheSize) {
-        if(!batchInserterIndexes.containsKey(indexName)) {
+        if (!batchInserterIndexes.containsKey(indexName)) {
             BatchInserterIndex index = indexProvider.nodeIndex(indexName, MapUtil.stringMap("type", "exact"));
             if (indexCacheSize > 0) {
                 index.setCacheCapacity(BACTH_INDEX_ID_NAME, indexCacheSize);
             }
             batchInserterIndexes.put(indexName, index);
-        }
-        else {
+        } else {
             log.trace("Index [" + indexName + "] already exist");
         }
     }
@@ -101,11 +100,10 @@ public class Neo4jBatchDatabase {
      * @param indexName Name of the index to flush
      */
     public void flushBatchIndex(String indexName) {
-        if(batchInserterIndexes.containsKey(indexName)) {
+        if (batchInserterIndexes.containsKey(indexName)) {
             BatchInserterIndex index = batchInserterIndexes.get(indexName);
             index.flush();
-        }
-        else {
+        } else {
             log.trace("Flushing a non exist index ... [" + indexName + "]");
         }
     }
@@ -113,19 +111,18 @@ public class Neo4jBatchDatabase {
     /**
      * Push a node importId into the batch index.
      *
-     * @param indexName The batch index name
-     * @param node Neo4j identifier
+     * @param indexName     The batch index name
+     * @param node          Neo4j identifier
      * @param importIdValue Import identifier
      */
     public void indexNodeInBatchIndex(String indexName, long node, Object importIdValue) {
-        if(batchInserterIndexes.containsKey(indexName)) {
+        if (batchInserterIndexes.containsKey(indexName)) {
             BatchInserterIndex index = batchInserterIndexes.get(indexName);
 
             Map<String, Object> props = new HashMap<>();
             props.put(BACTH_INDEX_ID_NAME, importIdValue);
             index.add(node, props);
-        }
-        else {
+        } else {
             log.trace("Can't index node " + node + "/" + importIdValue + " into a none existant index [" + indexName + "]");
         }
     }
@@ -134,19 +131,18 @@ public class Neo4jBatchDatabase {
      * Find a node in the index.
      *
      * @param indexName Name of the batch index
-     * @param value Value to search in index
+     * @param value     Value to search in index
      * @return Neo4j node identifier
      */
     public Long findNodeInBatchIndex(String indexName, Object value) {
         Long nodeId = null;
-        if(this.batchInserterIndexes.containsKey(indexName)) {
+        if (this.batchInserterIndexes.containsKey(indexName)) {
             IndexHits<Long> result = this.batchInserterIndexes.get(indexName).get(BACTH_INDEX_ID_NAME, value);
             if (result.size() > 0) {
-                nodeId =result.getSingle();
+                nodeId = result.getSingle();
             }
-        }
-        else {
-            log.trace("Can't find object [" + value + "] into index " + indexName );
+        } else {
+            log.trace("Can't find object [" + value + "] into index " + indexName);
         }
         return nodeId;
     }
@@ -154,8 +150,8 @@ public class Neo4jBatchDatabase {
     /**
      * Create schema.
      *
-     * @param type Type of schema to create (ie. constraint or index on node property)
-     * @param label Node label
+     * @param type     Type of schema to create (ie. constraint or index on node property)
+     * @param label    Node label
      * @param property Node property
      */
     public void createSchema(String type, String label, String property) {

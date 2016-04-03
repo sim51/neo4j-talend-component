@@ -27,7 +27,8 @@ abstract class Neo4jBatchInserterAbstract {
 
     /**
      * Create an object (ie a node or a relationship) into the batch database.
-     * @param incoming Talend incoming object
+     *
+     * @param incoming   Talend incoming object
      * @param columnList Attribute list of Talend object
      */
     public abstract void create(Object incoming, List<String> columnList) throws IllegalAccessException;
@@ -40,7 +41,7 @@ abstract class Neo4jBatchInserterAbstract {
     /**
      * Retrieve the value of a field on an object
      *
-     * @param obj the object
+     * @param obj      the object
      * @param property the property to retrieve
      * @return The property value, or null if not found
      */
@@ -62,7 +63,7 @@ abstract class Neo4jBatchInserterAbstract {
     /**
      * Convert a Talend object to a map of attributes.
      *
-     * @param obj The talend object
+     * @param obj        The talend object
      * @param columnList List of object properties
      * @return Map of attributes
      * @throws IllegalAccessException
@@ -75,21 +76,21 @@ abstract class Neo4jBatchInserterAbstract {
 
             // Type conversion for Neo4j
             Object transValue = null;
-            if(value != null) {
+            if (value != null) {
 
-                if(value instanceof java.sql.Date) {
+                if (value instanceof java.sql.Date) {
                     transValue = ((java.sql.Date) value).getTime();
                 }
 
-                if(value instanceof java.sql.Timestamp) {
+                if (value instanceof java.sql.Timestamp) {
                     transValue = ((java.sql.Timestamp) value).getTime();
                 }
 
-                if(value instanceof java.util.Date) {
+                if (value instanceof java.util.Date) {
                     transValue = ((java.util.Date) value).getTime();
                 }
 
-                if(transValue == null) {
+                if (transValue == null) {
                     transValue = value;
                 }
 

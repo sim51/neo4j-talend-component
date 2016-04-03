@@ -37,12 +37,12 @@ public class Neo4jBatchInserterNode extends Neo4jBatchInserterAbstract {
     /**
      * Constructor
      *
-     * @param batchDb Batch inserter database
-     * @param labelsField Field name where to find labels
-     * @param batchIndexName Batch index name
-     * @param batchIndexFieldName Batch index field name
+     * @param batchDb              Batch inserter database
+     * @param labelsField          Field name where to find labels
+     * @param batchIndexName       Batch index name
+     * @param batchIndexFieldName  Batch index field name
      * @param insertIndexFieldName If we have to save the index field
-     * @param indexCacheSize Size of the cache index
+     * @param indexCacheSize       Size of the cache index
      * @throws IOException
      */
     public Neo4jBatchInserterNode(Neo4jBatchDatabase batchDb, String labelsField, String batchIndexName, String batchIndexFieldName, Boolean insertIndexFieldName, Integer indexCacheSize) throws IOException {
@@ -87,10 +87,10 @@ public class Neo4jBatchInserterNode extends Neo4jBatchInserterAbstract {
             Label[] labels = this.computeLabels(incoming);
 
             // Remove none necessary fields (importId, & label)
-            if(StringUtils.isNotEmpty(this.labelsField)) {
+            if (StringUtils.isNotEmpty(this.labelsField)) {
                 properties.remove(this.labelsField);
             }
-            if(!this.insertIndexFieldName) {
+            if (!this.insertIndexFieldName) {
                 properties.remove(this.batchIndexFieldName);
             }
 
@@ -105,7 +105,7 @@ public class Neo4jBatchInserterNode extends Neo4jBatchInserterAbstract {
 
                 // update labels
                 List<Label> labelList = new ArrayList<>(Arrays.asList(labels));
-                for(Label lab : this.batchDb.getInserter().getNodeLabels(id)) {
+                for (Label lab : this.batchDb.getInserter().getNodeLabels(id)) {
                     labelList.add(lab);
                 }
                 Label[] mergeLabels = labelList.toArray(new Label[labelList.size()]);
@@ -138,7 +138,7 @@ public class Neo4jBatchInserterNode extends Neo4jBatchInserterAbstract {
 
             String labelList = (String) this.getObjectProperty(incoming, this.labelsField);
 
-            if(StringUtils.isNotEmpty(labelList)) {
+            if (StringUtils.isNotEmpty(labelList)) {
                 String[] labelTab = labelList.split(";");
                 labels = new Label[labelTab.length];
                 for (int i = 0; i < labelTab.length; i++) {
