@@ -20,5 +20,3 @@ Project website : http://sim51.github.io/neo4j-talend-component/
 
 == TODO
 
-* Remake packaging phase for the assembly (there is some cobertura thing into compile class on the archive)
-
