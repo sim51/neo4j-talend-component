@@ -12,14 +12,14 @@ env:
     - NEO4J_VERSION=3.1.5
     - NEO4J_VERSION=3.2.2
 before_install:
-  - openssl aes-256-cbc -K $encrypted_a0e7f0345a52_key -iv $encrypted_a0e7f0345a52_iv -in .travis-key.enc -out .travis-key -d
+  - openssl aes-256-cbc -K $encrypted_7c9a96972884_key -iv $encrypted_7c9a96972884_iv -in .travisdeploykey.enc -out .travisdeploykey -d
 script: "mvn clean test -Dneo4j.version=${NEO4J_VERSION}"
 after_success:
   - git config --global user.email "travis@bsimard.com"
   - git config --global user.name "Travis CI"
   - eval "$(ssh-agent -s)" #start the ssh agent
-  - chmod 600 .travis-key
-  - ssh-add .travis-key
+  - chmod 600 .travisdeploykey
+  - ssh-add .travisdeploykey
   - if [[ "$TRAVIS_PULL_REQUEST" = "false"  && "$NEO4J_VERSION" == "3.2.2" && "$TRAVIS_JDK_VERSION" == "oraclejdk8" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean package site; fi
   - if [[ "$TRAVIS_PULL_REQUEST" = "false"  && "$NEO4J_VERSION" == "3.2.2" && "$TRAVIS_JDK_VERSION" == "oraclejdk8" &&  "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_PULL_REQUEST" == "false" ]]; then mvn clean cobertura:cobertura coveralls:report -Pcoverage -Dcoverall.token=$COVERALL_TOKEN; fi
 notifications:
