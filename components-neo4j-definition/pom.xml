@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.talend.components</groupId>
+        <artifactId>components-neo4j-aggregator</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.talend.components</groupId>
+    <artifactId>components-neo4j-definition</artifactId>
+    <name>Neo4j Talend components - Definition</name>
+    <packaging>bundle</packaging>
+
+    <properties>
+        <runtime.maven.artifactId>components-neo4j-runtime</runtime.maven.artifactId>
+    </properties>
+
+    <dependencies>
+
+        <!-- APIs for all Components -->
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-api</artifactId>
+        </dependency>
+        <!-- Annotation processing -->
+        <dependency>
+            <groupId>biz.aQute.bnd</groupId>
+            <artifactId>annotation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+        </dependency>
+        <!-- Shared component properties such as Use/Password or Schema -->
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.url</groupId>
+            <artifactId>pax-url-aether</artifactId>
+        </dependency>
+
+        <!-- Testing deps -->
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-common</artifactId>
+            <classifier>bundle</classifier>
+            <scope>test</scope>
+        </dependency>
+        <!-- Jar containing Test utils methods -->
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-api</artifactId>
+            <classifier>tests</classifier>
+            <scope>test</scope>
+        </dependency>
+        <!-- spring jar for integration tests -->
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-api-service-rest</artifactId>
+            <classifier>lib</classifier>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-api-service-rest</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <!-- dependencies for OSGI integration tests -->
+        <dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-osgitest</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <systemPropertyVariables>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>lib-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <configuration>
+                            <instructions>
+                                <Bundle-Name>${project.name}</Bundle-Name>
+                                <TalendDefs>"${classes;CONCRETE;EXTENDS;org.talend.components.neo4j.generic.GenericComponentDefinition}"</TalendDefs>
+                                <Bundle-SymbolicName>org.talend.components.neo4j.definition.lib</Bundle-SymbolicName>
+                                <Service-Component>*</Service-Component>
+                                <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                                <Include-Resource>
+                                    {maven-resources},
+                                    META-INF/services/=target/classes/META-INF/services/,
+                                    META-INF/maven/${project.groupId}/${project.artifactId}/dependencies.txt=target/classes/META-INF/maven/${project.groupId}/${project.artifactId}/dependencies.txt,
+                                </Include-Resource>
+                            </instructions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-bundle</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>tests</classifier>
+                            <outputDirectory>unexisting_ouput_directory_to_avoid_classes_to_be_embedded</outputDirectory>
+                            <instructions>
+                                <Bundle-Name>${project.name}</Bundle-Name>
+                                <TalendDefs>"${classes;CONCRETE;EXTENDS;org.talend.components.neo4j.generic.GenericComponentDefinition}"</TalendDefs>
+                                <Import-Package>!*internal,org.talend*,org.slf4j*,javax.xml.namespace,org.junit*,org.hamcrest*</Import-Package>
+                                <Bundle-SymbolicName>org.talend.components.neo4j.definition.test</Bundle-SymbolicName>
+                                <Fragment-Host>org.talend.components.neo4j</Fragment-Host>
+                                <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                                <DynamicImport-Package>*</DynamicImport-Package>
+                                <Embed-Dependency/>
+                                <Export-Package>*</Export-Package>
+                                <Include-Resource>=target/test-classes/</Include-Resource>
+                            </instructions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>bundle</classifier>
+                            <instructions>
+                                <Bundle-Name>${project.name}</Bundle-Name>
+                                <TalendDefs>"${classes;CONCRETE;EXTENDS;org.talend.components.neo4j.generic.GenericComponentDefinition}"</TalendDefs>
+                                <Bundle-SymbolicName>org.talend.components.neo4j.definition</Bundle-SymbolicName>
+                                <Import-Package>!*internal,org.talend*,org.slf4j*,javax.xml.namespace,org.apache.commons*,org.apache.avro.*</Import-Package>
+                                <Service-Component>*</Service-Component>
+                                <Embed-Dependency>!components*|auto-service,*;scope=compile|runtime</Embed-Dependency>
+                                <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                                <Include-Resource>
+                                    {maven-resources},
+                                    META-INF/services/=target/classes/META-INF/services/,
+                                    META-INF/maven/${project.groupId}/${project.artifactId}/dependencies.txt=target/classes/META-INF/maven/${project.groupId}/${project.artifactId}/dependencies.txt,
+                                </Include-Resource>
+                            </instructions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

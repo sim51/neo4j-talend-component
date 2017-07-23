@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.talend.components</groupId>
+        <artifactId>components-neo4j-aggregator</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+	<groupId>org.talend.components</groupId>
+	<artifactId>components-neo4j-runtime</artifactId>
+	<packaging>jar</packaging>
+	<name>Neo4j Talend components - Runtime</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-import-tool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.neo4j.driver</groupId>
+			<artifactId>neo4j-java-driver</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>org.talend.components</groupId>
+            <artifactId>components-neo4j-definition</artifactId>
+		</dependency>
+		<!-- APIs for all Components -->
+		<dependency>
+			<groupId>org.talend.components</groupId>
+			<artifactId>components-api</artifactId>
+		</dependency>
+		<!-- Jar containing Test utils methods -->
+		<dependency>
+			<groupId>org.talend.components</groupId>
+			<artifactId>components-api</artifactId>
+			<classifier>tests</classifier>
+			<scope>test</scope>
+		</dependency>
+		<!-- jar for integration tests -->
+		<dependency>
+			<groupId>org.talend.components</groupId>
+			<artifactId>components-api-service-common</artifactId>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
+
+</project>
