@@ -97,13 +97,19 @@
         <!-- Neo4j dependencies -->
         <dependency>
             <groupId>org.neo4j</groupId>
-            <artifactId>neo4j</artifactId>
+            <artifactId>neo4j-kernel</artifactId>
             <version>${neo4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-import-tool</artifactId>
             <version>${neo4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>${neo4j.version}</version>
+            <scope>test</scope>
         </dependency>
         <!-- Talend log4j library -->
         <dependency>
@@ -202,6 +208,7 @@
                         </goals>
                         <configuration>
                             <includeScope>runtime</includeScope>
+                            <prependGroupId>true</prependGroupId>
                             <outputDirectory>${project.build.directory}/components/lib</outputDirectory>
                         </configuration>
                     </execution>
@@ -246,6 +253,11 @@
                                         <var name="basename.strip" unset="true"/>
                                         <basename file="@{file}" property="basename"/>
                                         <basename file="@{file}" property="basename.strip" suffix=".jar"/>
+
+                                        <propertyregex property="group" input="${basename.strip}" regexp="Number of current user build lists:\s*([0-9]+)$" select="\1" />
+                                        <propertyregex property="project" input="${basename.strip}" regexp="'RevisionBuild' Run time\s*\(in minutes\)\s*=\s*([0-9\.]+)$" select="\1" />
+                                        <propertyregex property="version" input="${basename.strip}" regexp="\[Build\] RC\s*\=\s*([0-9]+)$" select="\1" />
+
                                         <var name="filenames" value="${basename}"/>
                                         <var name="filenames.strip" value="${basename.strip}"/>
                                         <var name="import.clause"
