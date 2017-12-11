@@ -108,8 +108,8 @@
 <a class="jxr_linenumber" name="L100" href="#L100">100</a> 
 <a class="jxr_linenumber" name="L101" href="#L101">101</a>                 <em class="jxr_comment">// update properties</em>
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>                 Map&lt;String, Object&gt; props = <strong class="jxr_keyword">this</strong>.batchDb.getInserter().getNodeProperties(id);
-<a class="jxr_linenumber" name="L103" href="#L103">103</a>                 properties.putAll(props);
-<a class="jxr_linenumber" name="L104" href="#L104">104</a>                 <strong class="jxr_keyword">this</strong>.batchDb.getInserter().setNodeProperties(id, properties);
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>                 props.putAll(properties);
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>                 <strong class="jxr_keyword">this</strong>.batchDb.getInserter().setNodeProperties(id, props);
 <a class="jxr_linenumber" name="L105" href="#L105">105</a> 
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>                 <em class="jxr_comment">// update labels</em>
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>                 List&lt;Label&gt; labelList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;(Arrays.asList(labels));
